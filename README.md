@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+my-nextjs-movie-app/
+├── public/                          # Static assets (images, fonts, etc.)
+├── src/
+│   ├── app/                         # App directory for routing (Next.js 13+ App Router)
+│   │   ├── layout.tsx               # Root layout component
+│   │   ├── page.tsx                 # Home page (List of Movies)
+│   │   ├── movies/
+│   │   │   ├── [id]/page.tsx        # Dynamic route for Movie details
+│   │   │   ├── layout.tsx           # Layout for the movie section
+│   ├── components/                  # Reusable UI components
+│   │   ├── movie/
+│   │   │   ├── MovieCard.tsx        # Card component for individual movies
+│   │   │   ├── MovieList.tsx        # Component to render a list of movies
+│   │   └── common/
+│   │       └── Loader.tsx           # Common components like Loader, Error boundary
+│   ├── domain/                      # Domain logic (Entities & Use Cases)
+│   │   ├── entities/                # Core business objects
+│   │   │   └── Movie.ts             # Movie entity (defines movie properties)
+│   │   ├── usecases/                # Application business logic
+│   │   │   └── FetchMovies.ts       # Use case for fetching movies
+│   ├── infrastructure/              # Handles external APIs, frameworks, databases
+│   │   ├── apis/                    # API-related code
+│   │   │   └── tmdb.ts              # TMDB API interface
+│   │   ├── repositories/            # Data access layer
+│   │   │   └── MovieRepository.ts   # Repository for fetching movies (from API)
+│   ├── services/                    # Application services (facade for use cases)
+│   │   └── MovieService.ts          # Provides service methods for movies
+│   ├── styles/                      # Global and component-specific styles
+│   └── utils/                       # Utility functions and helpers
+│       └── fetcher.ts               # Utility for handling API requests
+├── .env.local                       # Environment variables for API keys
+├── next.config.js                   # Next.js configuration
+├── tsconfig.json                    # TypeScript configuration
+├── package.json                     # Project dependencies
+└── README.md                        # Project documentation

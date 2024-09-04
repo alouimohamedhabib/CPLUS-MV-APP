@@ -1,0 +1,5 @@
+{
+  "DISCOVER":"discover/movie",
+  "TRENDING":"trending/movie/week",
+  "LATEST":"movie/latest"
+}
