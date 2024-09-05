@@ -7,6 +7,9 @@ import { SlCalender } from "react-icons/sl";
 import Button from "../atoms/Button";
 import Link from "next/link";
 import MovieLinkOptimizer from "@/utils/MovieLinkOptimizer";
+import CImage from "../atoms/CImage";
+import { getPosterUrl } from "@/utils/getMaterialImageUrl";
+;
 
 /**
  * A React component that renders a movie card with details about a movie.
@@ -17,8 +20,9 @@ import MovieLinkOptimizer from "@/utils/MovieLinkOptimizer";
  * @returns {JSX.Element} - The rendered movie card component.
  */
 function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, cardWidth?: "3" | "4" | "6" }) {
- 
-  const movieUrl = MovieLinkOptimizer(movie.title ?? movie.original_name, movie.id, movie.release_date ?? movie.first_air_date)
+
+  const movieUrl = MovieLinkOptimizer(movie.title ?? movie.original_name, movie.id, movie.release_date ?? movie.first_air_date);
+
   return <>
     {movie ?
       <Link href={`movie/${movieUrl}`} className={
@@ -30,7 +34,11 @@ function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, card
         group
         cursor-pointer
       `}>
-        <Image height={300} width={300} objectFit="cover" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+        <CImage
+          height={300}
+          width={300}
+          // objectFit="cover"
+          src={getPosterUrl(movie.poster_path, "original")}
           alt={movie.original_title ?? movie.original_name}
           className="w-full group-hover:rounded-xl"
         />
@@ -50,12 +58,11 @@ function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, card
           </div>
           <h3 className="text-3xl font-bold  my-2">{movie.original_title ?? movie.original_name}</h3>
           <p>{movie.overview.slice(0, 100)}...</p>
-          <Button label={"More details"} className="w-fit my-4" onClick={()=>{}}></Button>
+          <Button label={"More details"} className="w-fit my-4" onClick={() => { }}></Button>
 
         </div>
       </Link>
       : ""}
   </>
 }
-
 export default memo(MovieCard)

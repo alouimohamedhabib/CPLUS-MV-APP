@@ -1,5 +1,4 @@
 import TMoviePosterSize from "@/Types/TMoviePosterSize";
-import { TTvShow } from "./TvShow";
 
 export type TMovie = {
   adult: boolean;
@@ -16,9 +15,39 @@ export type TMovie = {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  belongs_to_collection?: null;
+  budget?: number;
+  genres?: Genre[];
+  homepage?: string;
+  imdb_id?: string;
+  origin_country?: string[];
+  production_companies?: Productioncompany[];
+  production_countries?: Productioncountry[];
+  revenue?: number;
+  runtime?: number;
+  spoken_languages?: Spokenlanguage[];
+  status?: string;
+  tagline?: string;
+}
+export interface Spokenlanguage {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
 }
 
+export interface Productioncountry {
+  iso_3166_1: string;
+  name: string;
+}
 
+export interface Productioncompany {
+  id: number;
+  logo_path: null | string;
+  name: string;
+  origin_country: string;
+}
 
-
-export const getPosterUrl = (posterPath: string, size: TMoviePosterSize = "w1280"): string => `https://image.tmdb.org/t/p/${size}${posterPath}`;
+export interface Genre {
+  id: number;
+  name: string;
+}

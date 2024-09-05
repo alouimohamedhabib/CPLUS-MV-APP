@@ -24,7 +24,7 @@ export const getTrendyTvSeriesUseCase: () => Promise<TApiResponseObject<TTvShow>
 };
 
 
-export const getMovieDetailsUseCase : (movieId: string) => Promise<TApiResponseObject<TMovie>> = async (movieId) => {
+export const getMovieDetailsUseCase : (movieId: string) => Promise<TMovie> = async (movieId) => {
   const moviesData = await getMovieDetails(movieId)
   return moviesData;
 };

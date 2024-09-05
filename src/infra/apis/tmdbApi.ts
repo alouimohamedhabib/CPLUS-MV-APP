@@ -38,7 +38,7 @@ export const getPopularTvSeries: () => Promise<TMovieReponseObject> = async () =
 export const getMovieDetails = async (movieId: string) => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  const url = `${apiBaseUrl}${movieId}?api_key=${apiKey}`;
+  const url = `${apiBaseUrl}movie/${movieId}?api_key=${apiKey}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

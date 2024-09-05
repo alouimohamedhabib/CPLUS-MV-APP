@@ -1,4 +1,5 @@
 import Button from "@/components/atoms/Button"
+import AverageRatesRounder from "@/utils/AverageRatesRounder"
 import MovieLinkOptimizer from "@/utils/MovieLinkOptimizer"
 import { useRouter } from "next/navigation"
 import { memo, useCallback } from "react"
@@ -17,11 +18,7 @@ function Details({
   const handleClick = () => {
     router.push(`/movie/${movieUrl}`)
   }
-  /**
-   * Rounds the vote_average value to one decimal place.
-   * @returns {number} The rounded vote_average value.
-   */
-  const averageRatesRounder = () => Math.round(vote_average * 10) / 10;
+
 
   return (
     <div className="absolute h-full text-white pb-20 md:top-0 left-0 p-4 z-10 w-full lg:w-9/12 
@@ -35,13 +32,12 @@ function Details({
             <SlCalender className="  opacity-80" />
             {release_date}
           </span>
-          <span className="mr-4 uppercase font-bold flex items-center gap-2 "><SlLike className="text-md  opacity-80" />{averageRatesRounder()}</span>
+          <span className="mr-4 uppercase font-bold flex items-center gap-2 "><SlLike className="text-md  opacity-80" />{AverageRatesRounder(vote_average)}</span>
           <span className="mr-4 uppercase font-bold flex items-center gap-2 "><SlMicrophone className="text-md  opacity-80" />{language}</span>
         </div>
         <p className="text-gray-300 lg:w-10/12">{overview}</p>
         <Button type="info" className="w-fit mt-2" label={`More details`} onClick={handleClick} />
       </div>
-
     </div>
   )
 }
