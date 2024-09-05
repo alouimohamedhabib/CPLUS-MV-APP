@@ -9,6 +9,8 @@ img {
   height: auto;
   display: block;
 }
-
+* {
+  color: white;
+}
 /* carousel */
 

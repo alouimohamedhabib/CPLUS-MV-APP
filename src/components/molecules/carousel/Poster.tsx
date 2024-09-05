@@ -8,7 +8,7 @@ function Poster({ poster, alttxt }: { poster: string, alttxt: string }) {
       
         loading="lazy"
         src={poster}
-        alt={alttxt}
+        alt={alttxt ?? "poster"}
         width={900}
         height={500}
         className="relative sm:w-auto h-[600px] md:h-auto  object-cover sm:h-auto md:w-full"

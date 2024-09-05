@@ -9,6 +9,9 @@ const config: Config =withMT({
   ],
   theme: {
     extend: {
+      maxHeight: {
+        'screen-h-header': 'calc(100vh - 4rem)',
+      },
       colors: {
         mainGreen: "rgb(0 102 92)"
       }

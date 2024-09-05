@@ -1,23 +1,40 @@
-import { fetchMaterialByType, fetchTrendyTvSeries } from "@/adapter/MovieService";
+import { fetchMaterialByType } from "@/adapter/MovieService";
 import MovieCard from "@/components/molecules/MovieCard";
-import { TMovie } from "@/domains/entities/Movie";
 import TMaterialToLoad from "@/Types/TMaterialToLoad";
+import Link from "next/link";
 import { memo } from "react";
+import { SlArrowRight } from "react-icons/sl";
 
 
-async function MoviesGrid<T extends TMaterialToLoad>({ target }: { target: T }) {
+/**
+ * Sahred component
+ * Renders a grid of movie cards based on the provided material type and header title.
+ * @param target - The type of material to fetch and display (e.g. TV series).
+ * @param headerTitle - The title to display above the grid of movie cards.
+ * @returns A React element containing the grid of movie cards.
+ */
+async function MoviesGrid<T extends TMaterialToLoad>({ target, headerTitle }: { target: T, headerTitle: string }) {
   const tvSeries = await fetchMaterialByType(target)
 
-  return <div className="">
-    <h2 className="block text-3xl flex-1  text-white">
-      Trending tv shows
-    </h2>
-    <div className="flex flex-wrap w-full  mx-auto">
-      {tvSeries?.map((movie) => (
-        <MovieCard movie={movie} />
-      ))}
-    </div>
-  </div>;
+  return <>
+    {
+      tvSeries ?
+        <>
+          <div className="flex flex-wrap items-center justify-between">
+            <h2 className="block text-2xl flex-1  text-white py-4 font-light">
+              {headerTitle}
+            </h2>
+            <Link href={"#"}>See more <SlArrowRight className="inline" /></Link>
+          </div>
+          <div className="flex flex-wrap ">
+            {tvSeries?.map((movie) => (
+              <MovieCard movie={movie} key={movie.id}  />
+            ))}
+          </div>
+        </>
+        : <></>
+    }
+  </>;
 }
 
 export default memo(MoviesGrid)

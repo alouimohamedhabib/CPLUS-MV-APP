@@ -1,5 +1,5 @@
 
-import { getPopularMovies, getPopularTvSeries } from "@/infra/apis/tmdbApi";
+import { getMovieDetails, getPopularMovies, getPopularTvSeries } from "@/infra/apis/tmdbApi";
 import { TMovie } from "../entities/Movie";
 import { TTvShow } from "../entities/TvShow";
 import { TApiResponseObject } from "@/Types/TApiResponseObject";
@@ -20,5 +20,11 @@ export const getTrendyMoviesUseCase: () => Promise<TApiResponseObject<TMovie>> =
  */
 export const getTrendyTvSeriesUseCase: () => Promise<TApiResponseObject<TTvShow>> = async () => {
   const moviesData = await getPopularTvSeries()
+  return moviesData;
+};
+
+
+export const getMovieDetailsUseCase : (movieId: string) => Promise<TApiResponseObject<TMovie>> = async (movieId) => {
+  const moviesData = await getMovieDetails(movieId)
   return moviesData;
 };

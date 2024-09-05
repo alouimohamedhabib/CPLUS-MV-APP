@@ -1,2 +1,2 @@
- type TMaterialToLoad = "movie" | "tv" | "person" | "collection" | "keyword" | "company" | "none"
+ type TMaterialToLoad = "movieList" | "showList" | "top" | "collection" 
 export default TMaterialToLoad

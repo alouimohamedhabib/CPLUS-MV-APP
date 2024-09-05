@@ -15,7 +15,7 @@ function MoviesCarousel({ movies }: { movies: TMovie[] }) {
         duration: 1,
       }}
       loop={true}
-      className="carousel sm:h-auto max-h-[1000px]">
+      className="carousel sm:h-auto max-h-screen-h-header overflow-hidden ">
       {movies.map((movie, index) => (
         <div className="relative " key={movie.id}>
           <div className="relative z-0">
