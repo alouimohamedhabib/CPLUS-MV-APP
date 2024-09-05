@@ -7,14 +7,15 @@ import Image from "next/image";
 import { memo } from "react";
 
 function MovieDetails({ movie }: { movie: TMovie }) {
-  const posterUrl = (backdrop_path: string) => getPosterUrl(backdrop_path, "original")
+
 
   return (
     <>
       <div className="flex max-h-screen-h-header relative">
         <Poster
+          className="w-full h-screen-h-header object-cover"
           alttxt={movie.title}
-          poster={posterUrl(movie.backdrop_path)}
+          poster={getPosterUrl(movie.backdrop_path ?? movie.poster_path, "original")}
         />
         <Informations
           budget={movie.budget?.toString() || ''}
@@ -27,5 +28,4 @@ function MovieDetails({ movie }: { movie: TMovie }) {
       </div>
     </>
   );
-
-}export default memo(MovieDetails)
+} export default memo(MovieDetails)

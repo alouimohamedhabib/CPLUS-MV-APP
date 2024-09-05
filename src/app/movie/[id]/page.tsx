@@ -34,6 +34,6 @@ export default async function Page({ params }: { params: { id: string; page?: nu
   const id = extractMovieId(params.id);
   const movie: TMovie = await fetchMovieDetails(id)
   return <>
-    {movie ? <MovieDetails movie={movie} /> : <BlackHoleLost />}
+    {movie.id ? <MovieDetails movie={movie} /> : <BlackHoleLost />}
   </>
 }

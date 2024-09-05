@@ -26,7 +26,10 @@ function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, card
   return <>
     {movie ?
       <Link href={`movie/${movieUrl}`} className={
-        `movie-card ${'w-' + cardWidth + '/12'} overflow-hidden relative
+        `movie-card 
+        w-full
+        md:w-6/12
+         ${'lg:w-' + cardWidth + '/12'} overflow-hidden relative
         hover:scale-95
         hover:-skew-x-1
         hover:z-40
@@ -37,20 +40,19 @@ function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, card
         <CImage
           height={300}
           width={300}
-          // objectFit="cover"
           src={getPosterUrl(movie.poster_path, "original")}
           alt={movie.original_title ?? movie.original_name}
           className="w-full group-hover:rounded-xl"
         />
         <div className="
           flex flex-col  align-text-bottom floating-info 
-          absolute opacity-0 bottom-0 h-3/4  left-0 right-0  text-white p-2
+          absolute md:opacity-0 bottom-0 h-3/4  left-0 right-0  text-white md:p-2
           bg-gradient-to-t from-black to-transparent
           justify-end
           transition-all duration-300 ease-linear
-         group-hover:opacity-100
-         group-hover:rounded-md
-        
+          group-hover:opacity-100
+          group-hover:rounded-md
+          p-4
         ">
           <div className="text-sm font-extrabold text-gray-400  ">
             <p className="mr-2"><SlCalender className="text-md mr-1 inline " /> {movie.release_date ?? movie.first_air_date}</p>
@@ -59,7 +61,6 @@ function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, card
           <h3 className="text-3xl font-bold  my-2">{movie.original_title ?? movie.original_name}</h3>
           <p>{movie.overview.slice(0, 100)}...</p>
           <Button label={"More details"} className="w-fit my-4" onClick={() => { }}></Button>
-
         </div>
       </Link>
       : ""}

@@ -16,7 +16,7 @@ import { memo } from "react";
 
 
 function CImage({
-  src, alt, loading = "lazy", width = 5000, height = 2000, className, fill
+  src, alt, loading = "lazy", width = 2000, height = 2000, className, fill
 }: { src: string, alt: string, loading?: "lazy" | "eager" | undefined, width?: number, height?: number, className?: string, fill?: boolean }) {
   return (
     <Image

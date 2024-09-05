@@ -15,7 +15,7 @@ const ScrollToTop = () => {
     }
   };
 
-  const debouncedToggleVisibility: (...args: any[]) => void = useCallback(Debouncer(toggleVisibility, 100), []);
+  const debouncedToggleVisibility: (...args: any[]) => void = Debouncer(toggleVisibility, 100);
   useEffect(() => {
     window.addEventListener('scroll', debouncedToggleVisibility);
     return () => {

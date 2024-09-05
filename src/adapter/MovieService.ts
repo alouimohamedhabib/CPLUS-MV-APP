@@ -1,8 +1,9 @@
 import { TMovie } from "@/domains/entities/Movie";
 import { TTvShow } from "@/domains/entities/TvShow";
-import { getMovieDetailsUseCase, getTrendyMoviesUseCase, getTrendyTvSeriesUseCase } from "@/domains/useCases/FetchMovies";
+import { getMovieDetailsUseCase, getTrendyMoviesUseCase, getTrendyTvSeriesUseCase, searchMoviesUseCase } from "@/domains/useCases/FetchMovies";
 import TMaterialToLoad from "@/Types/TMaterialToLoad";
 import { normalizeMovieData, normalizeTvShowData } from "./Normalizers";
+import { TApiResponseObject } from "@/Types/TApiResponseObject";
 
 
 
@@ -36,11 +37,18 @@ export const fetchTrendyTvSeries: () => Promise<TTvShow[]> = async () => {
  */
 export const fetchTrendyMovies: () => Promise<TMovie[]> = async () => {
   const rawMovies = await getTrendyMoviesUseCase()
-  return rawMovies.results.map(normalizeMovieData).slice(0, Number(process.env.NEXT_PUBLIC_TRENDY_MOVIES_CAROUSEL_SLIDES) || 8);
+  return rawMovies.results.map(normalizeMovieData).slice(0, Number(process.env.NEXT_PUBLIC_TRENDY_MOVIES_CARDOUSEL_SLIDES) || 8);
 };
 
 
-export const fetchMovieDetails =  async (movieId: string): Promise<TMovie> => {
+export const fetchMovieDetails = async (movieId: string): Promise<TMovie> => {
   const rawMovie = await getMovieDetailsUseCase(movieId)
   return normalizeMovieData(rawMovie);
-};
+}
+
+
+
+export const searchMovies: (keyword: string) => Promise<TApiResponseObject<TMovie>> = async (keyword) => {
+  const moviesData = await searchMoviesUseCase(keyword);
+  return moviesData;
+}
