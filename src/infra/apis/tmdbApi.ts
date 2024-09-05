@@ -1,10 +1,10 @@
 // Helper function to fetch popular movies from the TMDB API using fetch
 import { TMovieReponseObject } from "@/domains/entities/Movie";
-import { TRENDING } from "@/utils/Endpoints.json";
+import Endpoints from "@/utils/Endpoints.json";
 export const getPopularMovies: () => Promise<TMovieReponseObject> = async () => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  const url = `${apiBaseUrl}${TRENDING}?api_key=${apiKey}&`;
+  const url = `${apiBaseUrl}${Endpoints.TRENDING}?api_key=${apiKey}&`;
   try {
     const response = await fetch(url);
     if (!response.ok) {
