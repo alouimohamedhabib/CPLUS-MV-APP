@@ -1,5 +1,6 @@
 {
   "DISCOVER":"discover/movie",
   "TRENDING":"trending/movie/week",
-  "LATEST":"movie/latest"
+  "LATEST":"movie/latest",
+  "POPULAR_SERIES":"tv/popular"
 }

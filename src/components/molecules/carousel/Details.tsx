@@ -1,6 +1,7 @@
 import Button from "@/components/atoms/Button"
+import MovieLinkOptimizer from "@/utils/MovieLinkOptimizer"
 import { useRouter } from "next/navigation"
-import { memo } from "react"
+import { memo, useCallback } from "react"
 import { SlCalender, SlLike, SlMicrophone } from "react-icons/sl"
 
 function Details({
@@ -12,8 +13,9 @@ function Details({
   id
 }: { title: string, overview: string, release_date: string, vote_average: number, language: string, id: number }) {
   const router = useRouter()
+  const movieUrl = MovieLinkOptimizer(title, id, release_date)
   const handleClick = () => {
-    router.push(`/movie/${id}`)
+    router.push(`/movie/${movieUrl}`)
   }
   /**
    * Rounds the vote_average value to one decimal place.

@@ -1,4 +1,5 @@
 import TMoviePosterSize from "@/Types/TMoviePosterSize";
+import { TTvShow } from "./TvShow";
 
 export type TMovie = {
   adult: boolean;
@@ -16,13 +17,7 @@ export type TMovie = {
   vote_average: number;
   vote_count: number;
 }
-// A good idea is to place this type into a separate file since it does not belong to the domain.
-export type TMovieReponseObject = {
-  page: number;
-  results: TMovie[];
-  total_pages: number;
-  total_results: number;
-};
+
 
 
 

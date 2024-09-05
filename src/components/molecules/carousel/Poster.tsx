@@ -5,6 +5,8 @@ function Poster({ poster, alttxt }: { poster: string, alttxt: string }) {
   return (
     <>
       <Image
+      
+        loading="lazy"
         src={poster}
         alt={alttxt}
         width={900}
