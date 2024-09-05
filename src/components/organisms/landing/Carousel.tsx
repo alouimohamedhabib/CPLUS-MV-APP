@@ -15,10 +15,10 @@ function MoviesCarousel({ movies }: { movies: TMovie[] }) {
         duration: 1,
       }}
       loop={true}
-      className=" carousel">
+      className="carousel sm:h-auto max-h-[1000px]">
       {movies.map((movie, index) => (
-        <div className="relative h-full w-full" key={movie.id}>
-          <div className="relative">
+        <div className="relative " key={movie.id}>
+          <div className="relative z-0">
             <Details
               title={movie.title}
               overview={movie.overview}

@@ -9,7 +9,7 @@ function Poster({ poster, alttxt }: { poster: string, alttxt: string }) {
         alt={alttxt}
         width={900}
         height={500}
-        className="relative w-full"
+        className="relative sm:w-auto h-[600px] md:h-auto  object-cover sm:h-auto md:w-full"
       />
     </>
   )
