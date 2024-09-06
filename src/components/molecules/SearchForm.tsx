@@ -7,7 +7,7 @@ function SearchForm({ callback, suggestions, isLoading }: {
   isLoading?: boolean
 }) {
   return <div className="relative md:w-[600px]">
-    <input type="text" placeholder="Interstellar ..." className="p-8  rounded text-black border w-full " onChange={callback} />
+    <input type="search" placeholder="Interstellar ..." className="p-8  rounded text-black border w-full " onChange={callback} />
     <div className="absolute  top-0 bottom-0  right-4 flex justify-end items-center">
       {isLoading && <Loader />}
     </div>

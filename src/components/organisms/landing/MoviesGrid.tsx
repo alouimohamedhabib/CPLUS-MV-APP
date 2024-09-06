@@ -32,7 +32,7 @@ async function MoviesGrid<T extends TMaterialToLoad>({ target, headerTitle, hide
             <h2 className="block text-2xl flex-1  text-white py-4 font-light">
               {headerTitle}
             </h2>
-            <Link href={"/movies"} aria-label={`See more ${headerTitle}`}>See more <SlArrowRight className="inline" /></Link>
+            <Link href={`/movies?f=${target}`} aria-label={`See more ${headerTitle}`}>See more <SlArrowRight className="inline" /></Link>
           </div>}
           <div className="flex flex-wrap ">
             {multimediaContent?.map((movie) => (

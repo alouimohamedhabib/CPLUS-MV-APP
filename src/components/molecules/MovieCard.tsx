@@ -20,16 +20,17 @@ import { getPosterUrl } from "@/utils/getMaterialImageUrl";
  * @returns {JSX.Element} - The rendered movie card component.
  */
 function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, cardWidth?: "3" | "4" | "6" }) {
-
-  const movieUrl = MovieLinkOptimizer(movie.title ?? movie.original_name, movie.id, movie.release_date ?? movie.first_air_date);
-
+  const movieUrl = MovieLinkOptimizer(movie.title ?? movie.original_name, movie.id, movie.release_date ?? movie.first_air_date, !!movie.release_date);
+  const widthClassCompiler = () => `lg:w-${cardWidth}/12`;
   return <>
     {movie ?
       <Link href={`movie/${movieUrl}`} className={
         `movie-card 
         w-full
         md:w-6/12
-         ${'lg:w-' + cardWidth + '/12'} overflow-hidden relative
+         ${widthClassCompiler()}
+         lg:w-3/12
+         overflow-hidden relative
         hover:scale-95
         hover:-skew-x-1
         hover:z-40

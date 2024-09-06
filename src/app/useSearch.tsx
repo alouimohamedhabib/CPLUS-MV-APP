@@ -8,6 +8,7 @@ import { normalizeMovieData } from '@/adapter/Normalizers';
 import { TMovie } from '@/domains/entities/Movie';
 import Debouncer from '@/utils/Debouncer';
 import { useState, useCallback, useEffect } from 'react';
+import searchMoviesAction from './actions/SearchMovie';
 
 export function useSearch() {
   const [keyword, setKeyword] = useState<string>('')
@@ -34,7 +35,7 @@ export function useSearch() {
     }
 
     try {
-      const response = await searchMovies(searchKeyword);
+      const response = await searchMoviesAction(searchKeyword);
       setMovies(response.results.map(normalizeMovieData));
     } catch (error) {
       console.error('Error fetching movies:', error);

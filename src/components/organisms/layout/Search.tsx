@@ -13,6 +13,14 @@ function Search() {
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen)
+    if (!isSearchOpen) {
+      setTimeout(() => {
+        const searchInput = document.querySelector('input[type="search"]')
+        if (searchInput instanceof HTMLInputElement) {
+          searchInput.focus()
+        }
+      }, 0)
+    }
   }
 
   const hideSearch = useCallback(() => {

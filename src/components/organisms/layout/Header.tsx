@@ -5,7 +5,7 @@ import Search from "./Search"
 
 function Header() {
   return (
-    <header className=" bg-black flex z-10 w-full flex-wrap justify-between items-center p-4 text-white">
+    <header className="sticky top-0 bg-black flex z-50 w-full flex-wrap justify-between items-center p-4 text-white">
       <Logo />
       <div className="flex  gap-2">
         <Search />

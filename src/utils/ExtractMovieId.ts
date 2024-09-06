@@ -5,11 +5,12 @@
  * @returns The extracted movie ID.
  */
 
-const extractMovieId = (url: string) => {
-  if (!url) return '/'
+const extractMovieId = (url: string): { id: string; isMovie: boolean } => {
+  if (!url) return { id: '/', isMovie: false };
   const urlParts = url.split('-');
   const movieId = urlParts[urlParts.length - 1];
-  return movieId;
+  const isMovie = urlParts[urlParts.length - 2] === 'm';
+  return { id:movieId, isMovie };
 };
 
 export default extractMovieId;

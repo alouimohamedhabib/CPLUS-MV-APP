@@ -15,7 +15,7 @@ function MovieSuggestion({ movies, resetOnClick }: { movies: TMovie[], resetOnCl
   const router = useRouter();
   const navigateToMovie = (movie: TMovie) => {
     resetOnClick()
-    router.push(`/movie/${MovieLinkOptimizer(movie.original_title, movie.id, movie.release_date)}`)
+    router.push(`/movie/${MovieLinkOptimizer(movie.original_title, movie.id, movie.release_date, true)}`)
 
   }
   return (

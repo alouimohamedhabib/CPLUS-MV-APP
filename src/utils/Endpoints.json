@@ -1,5 +1,7 @@
 {
   "DISCOVER":"discover/movie",
+  "DETAILS_MOVIES":"movie",
+  "DETAILS_TVSHOW":"tv",
   "SEARCH_MOVIES":"search/movie",
   "TRENDING":"trending/movie/week",
   "LATEST":"movie/latest",
