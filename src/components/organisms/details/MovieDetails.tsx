@@ -6,26 +6,24 @@ import { getPosterUrl } from "@/utils/getMaterialImageUrl";
 import Image from "next/image";
 import { memo } from "react";
 
-function MovieDetails({ movie }: { movie: TMovie }) {
-
-
+function MovieDetails({ title, backdrop_path, poster_path, budget, production_companies, release_date, overview, vote_average, original_language }: TMovie) {
   return (
-    <>
-      <div className="flex max-h-screen-h-header relative">
-        <Poster
-          className="w-full h-screen-h-header object-cover"
-          alttxt={movie.title}
-          poster={getPosterUrl(movie.backdrop_path ?? movie.poster_path, "original")}
-        />
-        <Informations
-          budget={movie.budget?.toString() || ''}
-          productionCompanies={movie.production_companies}
-          release_date={movie.release_date}
-          overview={movie.overview}
-          vote_average={movie.vote_average}
-          title={movie.title}
-          language={movie.original_language} />
-      </div>
-    </>
+    <div className="flex max-h-screen-h-header relative" aria-label="Movie details">
+    <Poster
+      className="w-full h-screen-h-header object-cover"
+      alttxt={title}
+      poster={getPosterUrl(backdrop_path ?? poster_path, "original")}
+    />
+    <Informations
+      budget={budget?.toString() || ''}
+      productionCompanies={production_companies}
+      release_date={release_date}
+      overview={overview}
+      vote_average={vote_average}
+      title={title}
+      language={original_language} />
+  </div>
   );
-} export default memo(MovieDetails)
+}
+
+export default memo(MovieDetails)
