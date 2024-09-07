@@ -16,7 +16,6 @@ export const getPopularMovies: (page?: number, filters?: string) => Promise<TApi
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const url = `${apiBaseUrl}${Endpoints.TRENDING}?api_key=${apiKey}${page ? `&page=${page}` : ''}&${filters}`;
-  console.log(url);
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -40,7 +39,6 @@ export const getPopularTvSeries: (page?: number, filters?: string) => Promise<TA
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const url = `${apiBaseUrl}${Endpoints.POPULAR_SERIES}?api_key=${apiKey}${page ? `&page=${page}` : ''}${filters ? `&${filters}` : ''}`;
-  console.log(url);
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -64,7 +62,6 @@ export const getMovieDetails = async (movieId: string) => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const url = `${apiBaseUrl}${Endpoints.DETAILS_MOVIES}/${movieId}?api_key=${apiKey}`;
-  console.log("🔥🔥🔥", url);
   try {
     const response = await fetch(url);
     if (!response.ok) {

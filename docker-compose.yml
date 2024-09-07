@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  fronty:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+      # - NODE_ENV=dev
+    command: ["/bin/sh", "-c", "yarn dev"]
+    env_file:
+      - .env
+
+
+
+
+

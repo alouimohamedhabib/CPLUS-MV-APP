@@ -49,7 +49,7 @@ function Search() {
         onClick={toggleSearch}
       />
       {isSearchOpen && (
-        <div className="wrapper flex fixed top-0 left-0 right-0 bottom-0 flex-col items-center justify-start p-8 z-40 bg-slate-900 bg-opacity-80">
+        <div className="wrapper flex fixed top-0 left-0 right-0 bottom-0 flex-col items-center justify-start  pt-12 px-4 z-40 bg-slate-900 bg-opacity-80">
           <button
             className="absolute top-4 right-4 text-white text-2xl"
             onClick={hideSearch}

@@ -7,7 +7,7 @@
  * @param isMovie - A boolean indicating whether the movie is a movie (true) or a TV show (false).
  * @returns A URL-friendly string representing the movie.
  */
-const MovieLinkOptimizer: (movieTitle: string, id: number, releaseYear: string, isMovie?: boolean) => string = (movieTitle, id, releaseYear, isMovie = false) => {
+const MovieLinkOptimizer: (movieTitle: string, id: number, releaseYear: string, isMovie?: boolean) => string = (movieTitle, id, releaseYear, isMovie = true) => {
   const getYearFromReleaseDate = releaseYear?.split('-')[0] ?? releaseYear
   const movieTitleWithoutSpaces = `${movieTitle}-${getYearFromReleaseDate}`.replace(/\s+/g, '-');
   const movieTitleWithoutSpecialCharacters = movieTitleWithoutSpaces.replace(/[^a-zA-Z0-9-]/g, '');

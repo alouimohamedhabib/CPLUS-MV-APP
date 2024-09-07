@@ -6,8 +6,8 @@ function SearchForm({ callback, suggestions, isLoading }: {
   suggestions?: TMovie[] | undefined,
   isLoading?: boolean
 }) {
-  return <div className="relative md:w-[600px]">
-    <input type="search" placeholder="Interstellar ..." className="p-8  rounded text-black border w-full " onChange={callback} />
+  return <div className="relative w-full md:w-[600px]">
+    <input type="search" placeholder="Interstellar ..." className="p-4   rounded text-black border w-full " onChange={callback} />
     <div className="absolute  top-0 bottom-0  right-4 flex justify-end items-center">
       {isLoading && <Loader />}
     </div>

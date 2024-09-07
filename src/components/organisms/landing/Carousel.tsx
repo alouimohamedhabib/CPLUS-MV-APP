@@ -12,6 +12,7 @@ function MoviesCarousel({ movies }: { movies: TMovie[] }) {
     return movies.map((movie) => (
       <div key={movie.id}>
         <div className="relative z-0">
+          <Poster poster={getPosterUrl(movie.backdrop_path, "original")} alttxt={movie.title} />
           <Details
             title={movie.title}
             overview={movie.overview}
@@ -20,7 +21,6 @@ function MoviesCarousel({ movies }: { movies: TMovie[] }) {
             language={movie.original_language}
             id={movie.id}
           />
-          <Poster poster={getPosterUrl(movie.backdrop_path, "original")} alttxt={movie.title} />
         </div>
       </div>
     ));
