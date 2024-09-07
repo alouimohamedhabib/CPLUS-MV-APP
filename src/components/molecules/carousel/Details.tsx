@@ -21,7 +21,7 @@ function Details({
 
 
   return (
-    <div className="absolute h-full text-white pb-20 md:top-0 left-0 p-4 z-10 w-full lg:w-10/12 
+    <div className="absolute h-full text-white pb-20 top-0 left-0 p-4 z-10 w-full lg:w-10/12 
     md:bg-gradient-to-r md:from-gray-900 md:to-transparent
     bg-gradient-to-t from-gray-900 to-transparent
     ">

@@ -13,25 +13,19 @@ async function Movies({ searchParams }: { searchParams: { f: TMaterialToLoad , p
   const filters = `sort_by=${sort_by}&language=${language}`;
   try {
     const multimediaContent: TApiResponseObject<TMovie | TTvShow> | TMovie[] | TTvShow[] = await fetchMoviesListWithPagination(f, page, true, filters);
-
+    const finalMultimediaContent = "results" in multimediaContent ? multimediaContent.results : multimediaContent;
     return (
-      <div className="container m-auto">
+      <div className="container m-auto p-4">
         <h1 className="text-3xl font-bold text-white mb-4">
           {f === "movieList" ? "Movies" : "TV Series"}
         </h1>
         <div className="flex flex-wrap justify-center ">
-          {"results" in multimediaContent ? (
-            <MovieList
-              currentPage={multimediaContent.page}
-              pagesTotal={multimediaContent.total_pages}
-              multimediaContent={multimediaContent.results as TMaterialTupleType[]}
-              mediaType={f}
-            />
-          ) : (
-            <MovieList
-              multimediaContent={multimediaContent as TMaterialTupleType[]}
-            />
-          )}
+          <MovieList
+            currentPage={"results" in multimediaContent ? multimediaContent.page : undefined}
+            pagesTotal={"results" in multimediaContent ? multimediaContent.total_pages : undefined}
+            multimediaContent={finalMultimediaContent}
+            mediaType={f}
+          />
         </div>
       </div>
     );

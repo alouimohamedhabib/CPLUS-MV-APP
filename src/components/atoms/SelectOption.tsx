@@ -32,7 +32,7 @@ function SelectOption({
         </div>
         <select
           name={name}
-          className="bg-black text-white"
+          className="bg-black border border-gray-50 p-2 ml-2 mb-2 md:w-4/12 w-5/12 text-white"
           onChange={(e) => onSelect(name, e.target.value)}
           value={activeItem}
         >

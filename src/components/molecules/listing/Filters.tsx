@@ -52,7 +52,7 @@ function Filters({ materialType = "movieList" }: { materialType?: TMaterialToLoa
     router.push(`/movies?${prepareFilterToUrl()}`)
   }
   return (
-    <div className="flex gap-4 my-4 content-end justify-end">
+    <div className="flex flex-wrap my-4 content-end justify-end">
       {filterCriteria.map((filter, index) => <SelectOption activeSelection={selectedFilter} key={index} name={filter.queryKey} data={filter.options} onSelect={handleFilterState} />)}
       <button onClick={handleFilterChange} className="border border-gray-50 p-2 hover:bg-red-500 hover:border-red-700 ">Apply Filters</button>
     </div>

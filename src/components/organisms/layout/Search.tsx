@@ -27,7 +27,7 @@ function Search() {
     setIsSearchOpen(false)
     setMovies(undefined)
     debouncedKeyword('')
-  }, [debouncedKeyword])
+  }, [debouncedKeyword, setMovies])
 
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (event.key === 'Escape') {

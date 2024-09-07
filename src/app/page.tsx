@@ -2,7 +2,7 @@ import MoviesCarousel from "@/components/organisms/landing/Carousel";
 import { fetchTrendyMovies } from "@/adapter/MovieService";
 import MoviesGrid from "@/components/organisms/landing/MoviesGrid";
 import BlockWrapper from "@/components/molecules/BlockWrapper";
-
+ 
 export default async function Home() {
   let fetchedMovies;
   try {

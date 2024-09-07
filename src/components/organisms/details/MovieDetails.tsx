@@ -1,9 +1,7 @@
 import Poster from "@/components/molecules/carousel/Poster";
 import Informations from "@/components/molecules/details/Informations";
-import { TMovie } from "@/domains/entities/Movie";
 import { getPosterUrl } from "@/utils/getMaterialImageUrl";
 import { memo } from "react";
-import Seasons from "./Seasons";
 import { TMaterialTupleType } from "@/Types/MaterialTupleType";
 
 function MovieDetails({ title,name, backdrop_path, poster_path, budget, production_companies, release_date, overview, vote_average, original_language, first_air_date, seasons }: TMaterialTupleType) {

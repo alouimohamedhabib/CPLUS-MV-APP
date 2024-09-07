@@ -1,6 +1,8 @@
 import Pagination from "@/components/atoms/Pagination";
 import Filters from "@/components/molecules/listing/Filters";
 import MovieCard from "@/components/molecules/MovieCard";
+import { TMovie } from "@/domains/entities/Movie";
+import { TTvShow } from "@/domains/entities/TvShow";
 import { TMaterialTupleType } from "@/Types/MaterialTupleType";
 import TMaterialToLoad from "@/Types/TMaterialToLoad";
 import { memo } from "react";
@@ -14,9 +16,9 @@ import { memo } from "react";
  * @param mediaType - The type of media content (e.g., "movieList" or "tvShowList").
  * @returns A React component that displays the movie list and pagination.
  */
-function MovieList({ multimediaContent, pagesTotal, currentPage, mediaType }: { multimediaContent: TMaterialTupleType[], pagesTotal?: number, currentPage?: number, mediaType?: TMaterialToLoad }) {
+function MovieList({ multimediaContent, pagesTotal, currentPage, mediaType }: { multimediaContent: (TMovie | TTvShow)[], pagesTotal?: number, currentPage?: number, mediaType?: TMaterialToLoad }) {
   return <div >
-    <div className="">
+    <div className="container mx-auto">
       {multimediaContent ? <>
         <Filters materialType={mediaType} />
         <div className="flex flex-wrap justify-center lg:gap-0">
