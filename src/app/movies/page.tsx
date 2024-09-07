@@ -6,31 +6,32 @@ import { TTvShow } from "@/domains/entities/TvShow";
 import { TMaterialTupleType } from "@/Types/MaterialTupleType"
 import { TApiResponseObject } from "@/Types/TApiResponseObject";
 import TMaterialToLoad from "@/Types/TMaterialToLoad"
+import { filterCriteria } from "@/utils/filterCriteria";
 
-async function Movies({ searchParams }: { searchParams: { f: TMaterialToLoad, page: number } }) {
-  const { f, page } = searchParams
-  
+async function Movies({ searchParams }: { searchParams: { f: TMaterialToLoad , page: number, sort_by: typeof filterCriteria[number]["queryKey"], language: typeof filterCriteria[number]["options"][number]["value"] } }) {
+  const { f, page, sort_by, language } = searchParams
+  const filters = `sort_by=${sort_by}&language=${language}`;
   try {
-    const multimediaContent: TApiResponseObject<TMovie | TTvShow> | TMovie[] | TTvShow[] = await fetchMoviesListWithPagination(f, page, true);
-    
+    const multimediaContent: TApiResponseObject<TMovie | TTvShow> | TMovie[] | TTvShow[] = await fetchMoviesListWithPagination(f, page, true, filters);
+
     return (
       <div className="container m-auto">
         <h1 className="text-3xl font-bold text-white mb-4">
           {f === "movieList" ? "Movies" : "TV Series"}
         </h1>
         <div className="flex flex-wrap justify-center ">
-        {"results" in multimediaContent ? (
-          <MovieList
-            currentPage={multimediaContent.page}
-            pagesTotal={multimediaContent.total_pages}
-            multimediaContent={multimediaContent.results as TMaterialTupleType[]}
-            mediaType={f}
-          />
-        ) : (
-          <MovieList
-            multimediaContent={multimediaContent as TMaterialTupleType[]}
-          />
-        )}
+          {"results" in multimediaContent ? (
+            <MovieList
+              currentPage={multimediaContent.page}
+              pagesTotal={multimediaContent.total_pages}
+              multimediaContent={multimediaContent.results as TMaterialTupleType[]}
+              mediaType={f}
+            />
+          ) : (
+            <MovieList
+              multimediaContent={multimediaContent as TMaterialTupleType[]}
+            />
+          )}
         </div>
       </div>
     );

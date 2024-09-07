@@ -35,7 +35,7 @@ function Informations({
           </span>
           <span className="mr-4 uppercase font-bold flex items-center gap-2 "><SlLike className="text-md  opacity-80" />{AverageRatesRounder(vote_average)}</span>
           <span className="mr-4 uppercase font-bold flex items-center gap-2 "><SlMicrophone className="text-md  opacity-80" />{language}</span>
-          <p className="mr-4 uppercase font-bold flex items-center gap-2"><SlWallet /> {convertToMillions(budget)}M$</p>
+         {budget && <p className="mr-4 uppercase font-bold flex items-center gap-2"><SlWallet /> {convertToMillions(budget)}M$ </p>}
         </div>
         <p className="text-gray-300 text-2xl lg:w-10/12 my-4 font-light"> {overview}</p>
 

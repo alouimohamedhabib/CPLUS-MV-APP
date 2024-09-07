@@ -55,9 +55,9 @@ export const fetchMovieDetails = async (movieId: string): Promise<TMovie> => {
  * @param {string} movieId - The ID of the TV show to fetch.
  * @returns {Promise<TTvShow>} A promise that resolves to the TV show entity.
  */
-export const fetchTvShowDetails = async (movieId: string): Promise<TTvShow| null> => {
+export const fetchTvShowDetails = async (movieId: string): Promise<TTvShow | null> => {
   const rawMovie = await getTvShowDetailsUseCase(movieId)
-  if (rawMovie )
+  if (rawMovie)
     return normalizeTvShowData(rawMovie);
   return rawMovie
 }
@@ -79,9 +79,9 @@ export const searchMovies: (keyword: string) => Promise<TApiResponseObject<TMovi
  * @param {boolean} [rawResponse=false] - If true, returns the raw API response object. Otherwise, returns the normalized data.
  * @returns {Promise<TApiResponseObject<TMovie | TTvShow> | TMovie[] | TTvShow[]>} A promise that resolves to the fetched movies or TV shows, or the raw API response object.
  */
-export const fetchMoviesListWithPagination: (materialToLoad: TMaterialToLoad, page: number, rawResponse?: boolean) => Promise<TApiResponseObject<TMovie | TTvShow> | TMovie[] | TTvShow[]>
-  = async (materialToLoad, page, rawResponse = false) => {
-    const moviesData = materialToLoad === "movieList" ? await getTrendyMoviesUseCase(page) : await getTrendyTvSeriesUseCase(page);
+export const fetchMoviesListWithPagination: (materialToLoad: TMaterialToLoad, page: number, rawResponse?: boolean, filters?: string) => Promise<TApiResponseObject<TMovie | TTvShow> | TMovie[] | TTvShow[]>
+  = async (materialToLoad = "movieList", page, rawResponse = false, filters = '') => {
+    const moviesData = materialToLoad === "movieList" ? await getTrendyMoviesUseCase(page, filters) : await getTrendyTvSeriesUseCase(page, filters);
     if (rawResponse) return moviesData;
 
     return materialToLoad === "movieList"

@@ -22,14 +22,13 @@ async function MoviesGrid<T extends TMaterialToLoad>({ target, headerTitle, hide
     console.error("Failed to fetch material:", error);
     return undefined;
   });
-
   return <>
     {
       multimediaContent ?
         <>
           {hideTitle && <Filters />}
           {!hideTitle && <div className="flex flex-wrap items-center justify-between">
-            <h2 className="block text-2xl flex-1  text-white py-4 font-light">
+            <h2 className="block text-2xl flex-1 text-white py-4 font-light">
               {headerTitle}
             </h2>
             <Link href={`/movies?f=${target}`} aria-label={`See more ${headerTitle}`}>See more <SlArrowRight className="inline" /></Link>
@@ -45,5 +44,4 @@ async function MoviesGrid<T extends TMaterialToLoad>({ target, headerTitle, hide
   </>;
   { !multimediaContent && <p>No content available</p> }
 }
-
 export default memo(MoviesGrid)

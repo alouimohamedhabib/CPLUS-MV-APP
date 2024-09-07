@@ -19,7 +19,7 @@ import { getPosterUrl } from "@/utils/getMaterialImageUrl";
  * @param {'3' | '4' | '6'} [props.cardWidth] - The width of the movie card, expressed as a fraction of the total width (e.g. '3' for 3/12 width).
  * @returns {JSX.Element} - The rendered movie card component.
  */
-function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, cardWidth?: "3" | "4" | "6" }) {
+function MovieCard({ movie, cardWidth = "3", className }: { movie: TMaterialTupleType, cardWidth?: "3" | "4" | "6", className?: string }) {
   const movieUrl = MovieLinkOptimizer(movie.title ?? movie.original_name, movie.id, movie.release_date ?? movie.first_air_date, !!movie.release_date);
   const widthClassCompiler = () => `lg:w-${cardWidth}/12`;
   return <>
@@ -37,6 +37,7 @@ function MovieCard({ movie, cardWidth = "3" }: { movie: TMaterialTupleType, card
         transition-transform duration-300 ease-in-out
         group
         cursor-pointer
+        ${className}
       `}>
         <CImage
           height={300}

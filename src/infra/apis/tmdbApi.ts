@@ -8,13 +8,15 @@ import Endpoints from "@/utils/Endpoints.json";
  * Fetches the list of popular movies from the TMDB API.
  *
  * @param page - The page number to fetch. If not provided, the first page will be fetched.
+ * @param filters - Optional filters to apply to the request.
  * @returns A promise that resolves to the API response object containing the list of popular movies.
  */
 
-export const getPopularMovies: (page?: number) => Promise<TApiResponseObject<TMovie>> = async (page) => {
+export const getPopularMovies: (page?: number, filters?: string) => Promise<TApiResponseObject<TMovie>> = async (page, filters) => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  const url = `${apiBaseUrl}${Endpoints.TRENDING}?api_key=${apiKey}${page ? `&page=${page}` : ''}`;
+  const url = `${apiBaseUrl}${Endpoints.TRENDING}?api_key=${apiKey}${page ? `&page=${page}` : ''}&${filters}`;
+  console.log(url);
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -34,10 +36,11 @@ export const getPopularMovies: (page?: number) => Promise<TApiResponseObject<TMo
  * @param page - The page number to fetch. If not provided, the first page will be fetched.
  * @returns A promise that resolves to the API response object containing the list of popular TV series.
  */
-export const getPopularTvSeries: (page?: number) => Promise<TApiResponseObject<TTvShow>> = async (page) => {
+export const getPopularTvSeries: (page?: number, filters?: string) => Promise<TApiResponseObject<TTvShow>> = async (page, filters) => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-  const url = `${apiBaseUrl}${Endpoints.POPULAR_SERIES}?api_key=${apiKey}${page ? `&page=${page}` : ''}`;
+  const url = `${apiBaseUrl}${Endpoints.POPULAR_SERIES}?api_key=${apiKey}${page ? `&page=${page}` : ''}${filters ? `&${filters}` : ''}`;
+  console.log(url);
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -61,7 +64,7 @@ export const getMovieDetails = async (movieId: string) => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const url = `${apiBaseUrl}${Endpoints.DETAILS_MOVIES}/${movieId}?api_key=${apiKey}`;
-  console.log("🔥🔥🔥",url);
+  console.log("🔥🔥🔥", url);
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -102,7 +105,7 @@ export const searchMovies = async (keyword: string) => {
 
 
 
-export const getTvShowDetails = async (movieId: string): Promise<TTvShow| null> => {
+export const getTvShowDetails = async (movieId: string): Promise<TTvShow | null> => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
   const url = `${apiBaseUrl}${Endpoints.DETAILS_TVSHOW}/${movieId}?api_key=${apiKey}`;

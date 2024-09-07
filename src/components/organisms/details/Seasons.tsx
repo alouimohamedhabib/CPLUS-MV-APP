@@ -38,7 +38,7 @@ function Seasons({ seasons }: { seasons: Season[] }) {
   return (
     <div className="overflow-x-auto">
       <h3 className="text-3xl mt-4 mb-4">
-        Seasons
+        Seasons ({seasons.length})
       </h3>
       <Carousel responsive={responsive} ssr={true} autoPlay autoPlaySpeed={3000}>
         {seasons.map(season => (
