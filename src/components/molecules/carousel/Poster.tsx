@@ -7,7 +7,7 @@ function Poster({ poster, alttxt, className }: { poster: string, alttxt: string,
       <CImage
         src={poster}
         alt={alttxt}
-        className={`relative sm:w-auto h-[600px] md:h-auto  object-cover sm:h-auto md:w-full ${className}`}
+        className={`relative sm:w-auto h-screen  object-cover md:w-full ${className}`}
       />
     </>
   )

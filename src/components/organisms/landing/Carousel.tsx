@@ -31,9 +31,9 @@ function MoviesCarousel({ movies }: { movies: TMovie[] }) {
 
   return (movies ?
     <Carousel
-      className="home-carousel"
+      className="home-carousel h-screen max-h-screen overflow-hidden"
       arrows={true}
-      pauseOnHover ssr={true} autoPlay autoPlaySpeed={3000}
+      pauseOnHover ssr={true} 
       responsive={{
         all: {
           breakpoint: { max: 4000, min: 0 },
