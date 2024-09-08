@@ -4,6 +4,7 @@
 
 * {
   outline: none;
+  color: white;
 }
 
 img {
@@ -12,12 +13,7 @@ img {
   display: block;
 }
 
-* {
-  color: white;
-}
-
 /* carousel */
-
 @media (max-width: 768px) {
   .home-carousel {
     .react-multiple-carousel__arrow {

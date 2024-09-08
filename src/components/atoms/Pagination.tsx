@@ -1,45 +1,20 @@
-
 import TMaterialToLoad from '@/Types/TMaterialToLoad';
+import getPageNumbers from '@/utils/GetPageNumbers';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import React, { memo } from 'react';
 
-
-
-function Pagination({ currentPage, totalPages, mediaType }: {
+function Pagination({ currentPage, totalPages, mediaType , params}: {
   currentPage: number;
   totalPages: number;
-  mediaType?: TMaterialToLoad
+  mediaType?: TMaterialToLoad,
+  params?: { [key: string]: string | number | undefined }
 }) {
-
-  const getPageNumbers = () => {
-    const pageNumbers = [];
-    const rangeStart = Math.max(1, currentPage - 2);
-    const rangeEnd = Math.min(totalPages, currentPage + 2);
-
-    if (rangeStart > 1) {
-      pageNumbers.push(1);
-      if (rangeStart > 2) {
-        pageNumbers.push('...');
-      }
-    }
-
-    for (let i = rangeStart; i <= rangeEnd; i++) {
-      pageNumbers.push(i);
-    }
-
-    if (rangeEnd < totalPages) {
-      if (rangeEnd < totalPages - 1) {
-        pageNumbers.push('...');
-      }
-      pageNumbers.push(totalPages);
-    }
-
-    return pageNumbers;
-  };
 
   return (
     <div className="flex justify-center items-center my-10">
-      {getPageNumbers().map((pageNumber, index) => (
+      {params?.get('f')}
+      {getPageNumbers(currentPage, totalPages).map((pageNumber, index) => (
         <React.Fragment key={index}>
           {pageNumber === '...' ? (
             <span className="mx-1">...</span>

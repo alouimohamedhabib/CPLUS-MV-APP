@@ -3,7 +3,6 @@
  *
  * @returns An object containing the current search keyword, a debounced version of the keyword, and a function to handle search input changes.
  */
-import { searchMovies } from '@/adapter/MovieService';
 import { normalizeMovieData } from '@/adapter/Normalizers';
 import { TMovie } from '@/domains/entities/Movie';
 import Debouncer from '@/utils/Debouncer';
@@ -47,6 +46,9 @@ export function useSearch() {
 
   useEffect(() => {
     fetchMovies(keyword);
+    return () => {
+      setMovies(undefined);
+    };
   }, [keyword, fetchMovies]);
 
   return {

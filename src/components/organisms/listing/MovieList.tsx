@@ -23,7 +23,7 @@ function MovieList({ multimediaContent, pagesTotal, currentPage, mediaType }: { 
         <Filters materialType={mediaType} />
         <div className="flex flex-wrap justify-center lg:gap-0">
           {multimediaContent.map((movie) => (
-            <MovieCard movie={movie as TMaterialTupleType} key={movie.id} className="md:p-2"/>
+            <MovieCard movie={movie as TMaterialTupleType} key={movie.id} className="md:p-2" />
           ))}      </div> </> : ""}
     </div>
     <Pagination mediaType={mediaType} currentPage={currentPage ?? 1} totalPages={pagesTotal ?? 1} />

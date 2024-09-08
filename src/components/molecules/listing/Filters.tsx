@@ -1,5 +1,5 @@
 "use client"
-import { memo, SetStateAction, useCallback, useEffect } from "react"
+import { memo, useCallback, useEffect } from "react"
 
 import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -23,6 +23,7 @@ function Filters({ materialType = "movieList" }: { materialType?: TMaterialToLoa
       })
     }
     handleFiltersUiMatching()
+    return () => {}
   }, [params])
 
   const handleFilterState = useCallback((queryKey: string, value: string) => {

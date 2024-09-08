@@ -13,18 +13,18 @@ services:
     env_file:
       - .env.production
 
-  # fronty:
-  #   build:
-  #     context: ./
-  #     dockerfile: Dockerfile
-  #     target: prod
-  #   ports:
-  #     - 3000:3000
-  #   volumes:
-  #     - .:/app
-  #     - /app/node_modules
+  fronty:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: prod
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
 
-  #     # - NODE_ENV=dev
-  #   command: ["/bin/sh", "-c", "yarn dev"]
-  #   env_file:
-  #     - .env
+      # - NODE_ENV=dev
+    command: ["/bin/sh", "-c", "yarn dev"]
+    env_file:
+      - .env

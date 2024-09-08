@@ -1,6 +1,5 @@
 "use client"
 import { TMaterialTupleType } from "@/Types/MaterialTupleType";
-import Image from "next/image";
 import { memo } from "react";
 import { BiSolidMicrophone } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";

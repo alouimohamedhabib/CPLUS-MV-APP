@@ -1,9 +1,7 @@
 "use client"
-import Movies from "@/app/movies/page"
 import { useSearch } from "@/app/useSearch"
 import MovieSuggession from "@/components/molecules/MovieSuggession"
 import SearchForm from "@/components/molecules/SearchForm"
-import Debouncer from "@/utils/Debouncer"
 import { useCallback, useEffect, useState } from "react"
 import { IoSearchCircleOutline } from "react-icons/io5"
 
@@ -40,6 +38,7 @@ function Search() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
+    return () => { }
   }, [handleKeyDown])
 
   return (
@@ -63,6 +62,5 @@ function Search() {
     </div>
   )
 }
-
 
 export default Search
