@@ -13,7 +13,6 @@ function Pagination({ currentPage, totalPages, mediaType , params}: {
 
   return (
     <div className="flex justify-center items-center my-10">
-      {params?.get('f')}
       {getPageNumbers(currentPage, totalPages).map((pageNumber, index) => (
         <React.Fragment key={index}>
           {pageNumber === '...' ? (
