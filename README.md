@@ -33,3 +33,4 @@ Live server: ` yarn && yarn dev`
 - [ ] movie card description need small tweaking for arabic language
   --> some movie dosent have arabic description
 - [x] sort by filter is not working ( potentially API issue)
+- [ ] Lose of filters when changing page

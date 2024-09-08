@@ -1,14 +1,12 @@
 import TMaterialToLoad from '@/Types/TMaterialToLoad';
 import getPageNumbers from '@/utils/GetPageNumbers';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import React, { memo } from 'react';
 
-function Pagination({ currentPage, totalPages, mediaType , params}: {
+function Pagination({ currentPage, totalPages, mediaType}: {
   currentPage: number;
   totalPages: number;
   mediaType?: TMaterialToLoad,
-  params?: { [key: string]: string | number | undefined }
 }) {
 
   return (
