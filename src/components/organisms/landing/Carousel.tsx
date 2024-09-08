@@ -33,12 +33,13 @@ function MoviesCarousel({ movies }: { movies: TMovie[] }) {
     <Carousel
       className="home-carousel"
       arrows={true}
+      pauseOnHover ssr={true} autoPlay autoPlaySpeed={3000}
       responsive={{
         all: {
           breakpoint: { max: 4000, min: 0 },
           items: 1
         }
-      }} pauseOnHover ssr={true} autoPlay autoPlaySpeed={3000}>
+      }}>
       {carouselItems}
     </Carousel>
     : <></>)
