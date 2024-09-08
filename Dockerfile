@@ -33,16 +33,15 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
-# COPY --from=builder /app/types /app/types
-# COPY --from=builder /app/src/lib /app/src/lib
+COPY --from=builder /app/types /app/types
+COPY --from=builder /app/src/lib /app/src/lib
 COPY --from=builder /app/next.config.mjs /app/next.config.mjs
-
 
 # Change ownership of the application files to nextjs user
 RUN chown -R nextjs:nodejs /app
-
 USER nextjs
-
+# ENTRYPOINT ["./migrate.sh"]
+# ENTRYPOINT ["/bin/sh", "-c", " yarn start"]
 ENTRYPOINT ["/bin/sh", "-c", "yarn start"]
 
 # Development stage
@@ -50,4 +49,4 @@ FROM base AS dev
 ENV NODE_ENV=development
 RUN yarn install
 COPY . .
-RUN npx prisma generate
+# ENTRYPOINT [ "/bin/sh" , "-c" , "./migrate.sh && yarn dev"]

@@ -1,23 +1,23 @@
 version: "3.8"
 
 services:
-  fronty-prod:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-      target: prod
-    ports:
-      - 3000:3000
-    environment:
-      - NODE_ENV=production
-    env_file:
-      - .env.production
+  # fronty-prod:
+  #   build:
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #     target: prod
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - NODE_ENV=production
+  #   env_file:
+  #     - .env.production
 
   fronty:
     build:
       context: ./
       dockerfile: Dockerfile
-      target: prod
+      target: dev
     ports:
       - 3000:3000
     volumes:

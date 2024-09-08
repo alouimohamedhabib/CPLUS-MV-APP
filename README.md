@@ -11,10 +11,17 @@ User can browse list of movies or tv shows , filter and navigate between.
 User can see details of certain movie/tv show
 
 > ## Spin up the project:
-j
-Live server: ` yarn && yarn dev`
+>
+> j
+> Live server: `yarn && yarn dev`
 
-#### Docker `docker compose up`
+### Docker
+
+#### dev : `make dev`
+
+#### prod : `make prod`
+
+#### Stop containers : `make down`
 
 #### URL `http:localhost:3000`
 
@@ -26,11 +33,12 @@ Live server: ` yarn && yarn dev`
 - [x] add debouncer to search input
 - [x] Direct redirection from auth page when passcode session is valid
 
+
 ## knwon issues
 
 - [ ] Movie card dynamc class "${'lg:w-' + cardWidth + '/12'}" is not always applied correctly
 - [x] Responsive issue with Carousel in certain big screens
 - [ ] movie card description need small tweaking for arabic language
-  --> some movie dosent have arabic description
+      --> some movie dosent have arabic description
 - [x] sort by filter is not working ( potentially API issue)
 - [ ] Lose of filters when changing page
