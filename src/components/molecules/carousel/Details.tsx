@@ -2,7 +2,7 @@ import Button from "@/components/atoms/Button"
 import AverageRatesRounder from "@/utils/AverageRatesRounder"
 import MovieLinkOptimizer from "@/utils/MovieLinkOptimizer"
 import { useRouter } from "next/navigation"
-import { memo, useCallback } from "react"
+import { memo } from "react"
 import { SlCalender, SlLike, SlMicrophone } from "react-icons/sl"
 
 function Details({

@@ -1,5 +1,3 @@
-import TMoviePosterSize from "@/Types/TMoviePosterSize";
-
 export type TMovie = {
   adult: boolean;
   backdrop_path: string;

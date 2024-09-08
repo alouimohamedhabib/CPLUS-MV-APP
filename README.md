@@ -24,10 +24,13 @@ Live server: ` yarn && yarn dev`
 
 - [x] remove @debouncer into a custom hook
 - [x] add debouncer to search input
+- [x] Direct redirection from auth page when passcode session is valid
 
 ## knwon issues
 
 - [ ] Movie card dynamc class "${'lg:w-' + cardWidth + '/12'}" is not always applied correctly
-- [ ] Responsive issue with Carousel in certain big screens
+- [x] Responsive issue with Carousel in certain big screens
 - [ ] movie card description need small tweaking for arabic language
+  --> some movie dosent have arabic description
 - [x] sort by filter is not working ( potentially API issue)
+- [ ] Lose of filters when changing page

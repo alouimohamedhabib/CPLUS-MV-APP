@@ -102,6 +102,12 @@ export const searchMovies = async (keyword: string) => {
 
 
 
+/**
+ * Fetches the details of a TV show from the TMDB API using the provided TV show ID.
+ *
+ * @param movieId - The ID of the TV show to fetch details for.
+ * @returns A Promise that resolves to the TV show details from the TMDB API, or null if the request fails.
+ */
 export const getTvShowDetails = async (movieId: string): Promise<TTvShow | null> => {
   const apiBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;

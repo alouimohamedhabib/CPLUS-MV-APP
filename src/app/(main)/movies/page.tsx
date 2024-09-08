@@ -3,7 +3,6 @@ import BlackHoleLost from "@/components/organisms/layout/BlackHoleLost";
 import MovieList from "@/components/organisms/listing/MovieList"
 import { TMovie } from "@/domains/entities/Movie";
 import { TTvShow } from "@/domains/entities/TvShow";
-import { TMaterialTupleType } from "@/Types/MaterialTupleType"
 import { TApiResponseObject } from "@/Types/TApiResponseObject";
 import TMaterialToLoad from "@/Types/TMaterialToLoad"
 import { filterCriteria } from "@/utils/filterCriteria";

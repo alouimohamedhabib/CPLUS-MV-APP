@@ -1,4 +1,3 @@
-import Button from "@/components/atoms/Button";
 import CompanyImg from "@/components/atoms/CompanyImg";
 import Seasons from "@/components/organisms/details/Seasons";
 import { Productioncompany } from "@/domains/entities/Movie";
@@ -7,7 +6,7 @@ import AverageRatesRounder from "@/utils/AverageRatesRounder";
 import convertToMillions from "@/utils/ConvertToMillions";
 import { getPosterUrl } from "@/utils/getMaterialImageUrl";
 import { memo } from "react";
-import { SlBookOpen, SlCalender, SlLike, SlMicrophone, SlWallet } from "react-icons/sl";
+import { SlCalender, SlLike, SlMicrophone, SlWallet } from "react-icons/sl";
 
 function Informations({
   title,

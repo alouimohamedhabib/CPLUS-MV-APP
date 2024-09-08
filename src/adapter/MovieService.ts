@@ -5,8 +5,6 @@ import TMaterialToLoad from "@/Types/TMaterialToLoad";
 import { normalizeMovieData, normalizeTvShowData } from "./Normalizers";
 import { TApiResponseObject } from "@/Types/TApiResponseObject";
 
-
-
 /**
 * Fetches movies or TV shows based on the provided target material type.
 * Used with shared grid component (@link components/organisms/landing/MoviesGrid.tsx)
@@ -26,6 +24,10 @@ export const fetchMaterialByType: <T extends TMaterialToLoad>(targetMaterial: T)
   }
 }
 
+/**
+ * Fetches a list of trending TV shows.
+ * @returns {Promise<TTvShow[]>} A promise that resolves to an array of TV show entities.
+ */
 export const fetchTrendyTvSeries: () => Promise<TTvShow[]> = async () => {
   const rawMovies = await getTrendyTvSeriesUseCase()
   return rawMovies.results.map(normalizeTvShowData).slice(0, Number(process.env.NEXT_PUBLIC_TRENDY_MOVIES_CAROUSEL_SLIDES) || 8);

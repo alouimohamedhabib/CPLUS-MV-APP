@@ -5,11 +5,9 @@ import { TMovie } from "@/domains/entities/Movie"
 import { getPosterUrl } from "@/utils/getMaterialImageUrl"
 import Carousel from "react-multi-carousel";
 import { memo, useMemo } from "react"
-import responsiveCarousel from "@/utils/CarouselReponsiveConfig"
 import 'react-multi-carousel/lib/styles.css';
 
 function MoviesCarousel({ movies }: { movies: TMovie[] }) {
-
   const carouselItems = useMemo(() => {
     return movies.map((movie) => (
       <div key={movie.id}>

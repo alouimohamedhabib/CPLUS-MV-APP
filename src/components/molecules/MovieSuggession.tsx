@@ -1,17 +1,13 @@
 import React, { memo } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { TMovie } from '@/domains/entities/Movie';
 import MovieLinkOptimizer from '@/utils/MovieLinkOptimizer';
 import { useRouter } from 'next/navigation';
-
-
 interface MovieSuggestionProps {
   movies: TMovie[];
 }
 
 function MovieSuggestion({ movies, resetOnClick }: { movies: TMovie[], resetOnClick: () => void }) {
-
   const router = useRouter();
   const navigateToMovie = (movie: TMovie) => {
     resetOnClick()
