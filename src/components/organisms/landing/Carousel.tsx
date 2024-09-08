@@ -11,7 +11,7 @@ import 'react-multi-carousel/lib/styles.css';
 function MoviesCarousel({ movies }: { movies: TMovie[] }) {
 
   const carouselItems = useMemo(() => {
-    return movies.slice(0, 1).map((movie) => (
+    return movies.map((movie) => (
       <div key={movie.id}>
         <div className="relative z-0">
           <Poster poster={getPosterUrl(movie.backdrop_path, "original")} alttxt={movie.title} />
