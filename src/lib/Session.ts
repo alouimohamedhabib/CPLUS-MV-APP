@@ -52,3 +52,8 @@ export async function createSession(name: string) {
     path: '/',
   })
 }
+
+// delete session
+export async function deleteSession() {
+  cookies().delete('passCode')
+}

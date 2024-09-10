@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { decrypt } from './lib/Session';
+import { decrypt, deleteSession } from './lib/Session';
 
 /**
  * Middleware function that checks the session cookie and redirects to the auth page if the session is invalid.
@@ -14,9 +14,12 @@ import { decrypt } from './lib/Session';
 export async function middleware(req: NextRequest) {
   const session = req.cookies.get('passCode');
   const sessionNameVal = (await decrypt(session?.value))?.name
-  if (!session || sessionNameVal !== process.env.NEXT_PUBLIC_PASSCODE ) { 
-    return NextResponse.redirect(new URL('/auth', req.url));
+  if (!session || sessionNameVal !== process.env.NEXT_PUBLIC_PASSCODE) {
+    const redirectUrl = new URL('/api', req.url);
+    redirectUrl.searchParams.set('deleteSession', 'true');
+    return NextResponse.redirect(redirectUrl);
   }
+  // no session refresh , maybe add it later
   return NextResponse.next();
 }
 export const config = {
@@ -30,25 +33,25 @@ export const config = {
      */
     {
       source:
-        '/((?!auth|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+        '/((?!auth|api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
       missing: [
         { type: 'header', key: 'next-router-prefetch' },
         { type: 'header', key: 'purpose', value: 'prefetch' },
       ],
     },
- 
+
     {
       source:
-        '/((?!auth|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+        '/((?!auth|api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
       has: [
         { type: 'header', key: 'next-router-prefetch' },
         { type: 'header', key: 'purpose', value: 'prefetch' },
       ],
     },
- 
+
     {
       source:
-        '/((?!auth|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+        '/((?!auth|api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
       has: [{ type: 'header', key: 'x-present' }],
       missing: [{ type: 'header', key: 'x-missing', value: 'prefetch' }],
     },
